@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <!-- For Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- For Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Old Standard TT|Roboto Slab|Lato|Open Sans">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- For JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+</head>
+<body onload="display(this.todo, this.completedTodo)">
+    <div class="container">
+        <h1>Todo App</h1>
+        <!-- Add Task Modal -->
+        <div id="myModal1" class="modal1">
+            <div class="modal-content1">
+                <div class="modal-header1">
+                  <span class="close1">&times;</span>
+                  <h2>Add Task</h2>
+                </div>
+                <div class="modal-body1">
+                  <form id="myForm1" name="myForm1" onsubmit="addTask(); return false;">
+                    <div id="add-newtitle">
+                        <p>Title : </p>
+                        <div class="select1">
+                            <select id="new_title">
+                                <option value="" disabled selected>Select Your Option</option>
+                                <option value="Shopping List">Shopping List</option>
+                                <option value="Office Work">Office Work</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <p id="validation_error_title1"></p>
+                    <p id="add-newtask">Task : 
+                        <input id="new_task" type="text" name="new_task" placeholder="Add Task Here">
+                    </p>
+                    <p id="validation_error_task1"></p>
+                  </form>
+                </div>
+                <div class="modal-footer1">
+                    <input type="button" id="btnSubmit1" value="Add" onclick="addTask()">
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <!-- Add New Task Button -->
+        <div class="add-task">
+            <button onclick="addNewTask()" id="btnSubmit"><i class="fa fa-plus-circle"></i>
+                Add New Task</button>
+        </div>
+
+        <!-- Search and Filter -->
+        <div class="search-and-filter">
+            <div class="icon-search">
+                <span class="fa fa-search icon-srch"></span>
+                <input class="Search Here" id="myInput1" onkeyup="searchFilter()" type="text" placeholder="Search">
+            </div>
+            <div class="select">
+                <select id="filter-task" onchange="searchFilter()">
+                    <option value="All Task" selected>All Task</option>
+                    <option value="Shopping List">Shopping List</option>
+                    <option value="Office Work">Office Work</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- View of Todo Task -->
+        <div class="todo-task">
+            <h3>Todo Task</h3>
+            <hr />
+            <ul class="remaining-tasks" id="remaining-tasks"></ul>
+            <p id="search-todo-msg">Search Task Not Found</p>
+            <p id="filter-todo-msg">No Tasks. Add Some Tasks</p>
+        </div>
+
+        <!-- View of Completed Task -->
+        <div class="completed-task">
+            <h3>Completed Task</h3>
+            <hr />
+            <ul class="completed-tasks" id="completed-tasks"></ul>
+            <p id="search-completed-msg">Search Task Not Found</p>
+            <p id="filter-completed-msg">No Completed Tasks</p>
+        </div>
+
+        <!-- Display Toast Message -->
+        <div id="toast"></div>
+
+        <!-- Edit Task Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <span class="close">&times;</span>
+                  <h2>Edit Task</h2>
+                </div>
+                <div class="modal-body">
+                  <form id="myForm" onsubmit="editmyTask(); return false;">
+                    <div id="edit-title">
+                        <p>Title : </p>
+                        <div class="select1">
+                            <select id="edit-newtitle">
+                                <option value="" disabled selected>Select Your Option</option>
+                                <option value="Shopping List">Shopping List</option>
+                                <option value="Office Work">Office Work</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <p id="validation_error_title"></p>
+                    <p id="edit-task"> Task :
+                        <input id="edit-newtask" type="text" placeholder="Edit Task Here">
+                    </p>
+                    <p id="validation_error_task"></p>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <input type="button" id="editModalTask" value="Submit" onclick="editmyTask()">
+                </div>
+              </div>
+        </div>
+
+        <!-- Feedback -->
+        <div class="feedback" id="feedback">
+            <h3>Feedback</h3>
+            <hr />
+            <div class="rating-and-button">
+                <div class="star-rating" id="star-rating">
+                    <input id="star-5" type="radio" name="rating" value="star-5" onclick="showButton()" />
+                    <label for="star-5" title="5 stars"><i class="fa fa-star"></i></label>
+
+                    <input id="star-4" type="radio" name="rating" value="star-4" onclick="showButton()" />
+                    <label for="star-4" title="4 stars"><i class="fa fa-star"></i></label>
+
+                    <input id="star-3" type="radio" name="rating" value="star-3" onclick="showButton()" />
+                    <label for="star-3" title="3 stars"><i class="fa fa-star"></i></label>
+                    
+                    <input id="star-2" type="radio" name="rating" value="star-2" onclick="showButton()" />
+                    <label for="star-2" title="2 stars"><i class="fa fa-star"></i></label>
+
+                    <input id="star-1" type="radio" name="rating" value="star-1" onclick="showButton()" />
+                    <label for="star-1" title="1 star"><i class="fa fa-star"></i></label>
+                </div>
+                <div class="feedback-buttons">
+                    <button id="submit-feedback" onclick="submitFeedback()">Submit Feedback</button>
+                    <button id="cancel-feedback" onclick="cancelFeedback()">Cancel Feedback</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

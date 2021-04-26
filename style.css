@@ -1,0 +1,607 @@
+body {
+    background-color: #FFDEAD;
+    font-family: "Lato";
+}
+
+.container {
+    display: block;
+    margin: 20px auto 0;
+    width: 500px;
+    border: 1px solid;
+    background-color: #fffff8;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+h1, h2 {
+    text-align: center;
+    font-family: "Old Standard TT";
+}
+
+h3 {
+    text-transform: uppercase;
+    font-family: "Old Standard TT";
+}
+
+hr {
+    border: 1px solid black;
+}
+
+/* Add New Task, Add Task From Modal and Submit Edit Task From Modal Submit Button */
+#btnSubmit, #btnSubmit1, #editModalTask {
+    margin: auto;
+    display: block;
+    padding: 2px;
+    text-align: center;
+    font-size: 1.1em;
+    width: 75%;
+    height: 50px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background-color: #497BE8;
+}
+
+/* Add Task From Modal and Submit Edit Task From Modal Submit Button */
+#btnSubmit1, #editModalTask {
+    width: 30%;
+    background-color: #fff;
+}
+
+#btnSubmit:active, #btnSubmit1:active {
+    background-color: #497BE8;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+#editModalTask:active {
+    background-color: #497BE8;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+/* ul tag for Todo Task, ul tag for Completed Task */
+.remaining-tasks, .completed-tasks{
+    list-style-type: none;
+    padding-left: 5px;
+}
+
+/* Delete, Completed, Incompleted and Edit Button */
+.delete, .completed, .incompleted, .edit {
+    padding: 10px;
+    border: none;
+    background: none;
+    font-size: 2.1em;
+    cursor: pointer;
+}
+
+/* div tag for particular Todo Task, div tag for particular Completed Task */
+.info-todo, .info-completed {
+    display: flex;
+    flex-direction: row;
+    box-shadow: 5px 5px 5px #dcdcdc;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+/* li tag for Todo Task, li tag for Completed Task, Message for when no data in Todo Task, Message fowhen do data in Completed Task */
+.list-todo, .list-completed, .no-todo-task, .no-completed-task {
+    width: 400px;
+    word-wrap: break-word;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    overflow: auto;
+}
+
+.no-todo-task, .no-completed-task {
+    color: red;
+}
+
+/* div tag for Search and Filter */
+.search-and-filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-top: 10px;
+}
+
+/* For Searchbar */
+.icon-search {
+    position: relative;
+    align-content: center;
+}
+
+/* For Search Icon */
+.icon-srch { 
+    position: absolute; 
+    left: 20px;
+    top: 8px; 
+    font-size: 1.3em;
+}
+
+/* Searchbar Text */
+#myInput1 {
+    width: 140px;
+    height: 30px;
+    padding: 2px;
+    padding-left: 50px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1.1em;
+    background-color: #497BE8;
+}
+
+/* Edit Task Modal, Add New Task Modal */
+.modal, .modal1 {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Edit Task Modal Content, Add New Task Content */
+.modal-content, .modal-content1 {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 30%;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+  
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+  
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* Close Button for Edit Task and Add New Task */
+.close, .close1 {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover, .close:focus, .close1:hover, .close1:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal Header for Edit Task and Add New Task */
+.modal-header, .modal-header1 {
+    padding: 2px 16px;
+    background-color: #497BE8;
+    color: black;
+    border-radius: 20px 20px 0px 0px;
+}
+  
+/* Modal Body for Edit Task and Add New Task */
+.modal-body, .modal-body1 {
+    padding: 2px 16px;
+}
+
+/* Modal Footer for Edit Task and Add New Task */
+.modal-footer, .modal-footer1 {
+    background-color: #497BE8;
+    color: black;
+    border-radius: 0px 0px 20px 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* Add Title Field */
+#add-newtitle {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Title for Edit Task Modal */
+#edit-title {
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+}
+
+/* Task for Edit Task Modal */
+#edit-task {
+    width: 50%;
+    border-radius: 3px;
+    font-size: 1em;
+}
+
+/* For select tag */
+select {
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0;
+    background: #497BE8;
+    background-image: none;
+    flex: 1;
+    padding: 0 0.5em;
+    color: #000;
+    cursor: pointer;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+/* For Filter Dropdown Menu and Add New Task Dropdown Menu */
+.select, .select1 {
+    position: relative;
+    display: flex;
+    width: 10em;
+    height: 2em;
+    background: #497BE8;
+    font-size: 1.05em;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.select1 {
+    width: 12em;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+/* For option tag */
+option {
+    background: #fff;
+}
+
+.select::after, .select1::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    background: #497BE8;
+    cursor: pointer;
+    pointer-events: none;
+}
+
+.select:hover::after, .select1:hover::after {
+    color: #f39c12;
+}
+
+/* Add Task, Filter Task and Edit Task Dropdown Menu */
+#new_title, #filter-task, #edit-newtitle {
+    width: 27%;
+    padding: 2px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 1em;
+    margin-bottom: 3px; 
+}
+
+/* Filter Task Dropdown Menu */
+#filter-task {
+    width: 10em;
+    outline: 0;
+    border: 0;
+}
+
+/* Add Task Dropdown Menu */
+#new_title, #edit-newtitle {
+    width: 40%;
+    border: 0;
+}
+
+/* Input Tag for Add New Task */
+#new_task {
+    width: 37%;
+    padding: 2px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 1.1em;
+    margin-bottom: 3px;
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: #497BE8;
+    margin-left: 5px;
+}
+
+/* Edit Task From Modal */
+#edit-newtask {
+    width: 71%;
+    padding: 2px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 1em;
+    margin-bottom: 3px;
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: #497BE8;
+}
+
+/* Validation Message for Edit Task Title, Task Modal and Valiation Message for Add New Task Tile, Task Modal*/
+#validation_error_title, #validation_error_task, #validation_error_title1, #validation_error_task1 {
+    color: red;
+}
+
+/* Message for when do data available in Todo Task, Completed Task using Searchbar and
+   Message for when do data available in Todo Task, Completed Task using Filter */
+#search-todo-msg, #search-completed-msg, #filter-todo-msg, #filter-completed-msg {
+    font-size: 1.1em;
+    text-align: center;
+    display: none;
+    color: red;
+}
+
+/* Feedback Star Rating */
+.star-rating {
+    direction: rtl;
+    display: inline-block;
+    padding: 10px;
+    padding-top: 0px;
+}
+
+.star-rating input[type=radio] {
+    display: none;
+}
+
+.star-rating label {
+    color: #bbb;
+    font-size: 25px;
+    padding: 0;
+    cursor: pointer;
+    transition: all .3s ease-in-out
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input[type=radio]:checked ~ label {
+    color: #f2b600
+}
+
+/* Rating and Button */
+.rating-and-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* Feedback Buttons */
+.feedback-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Submit and Cancel Button for Feedback */
+#submit-feedback, #cancel-feedback {
+    padding: 2px;
+    text-align: center;
+    font-size: 1.1em;
+    width: 30%;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    margin-left: 30px;
+    background-color: #497BE8;
+    display: none;
+}
+
+/* For Placeholder */
+::placeholder {
+    color: #000;
+    opacity: 0.5;
+}
+
+/* For Toast Message */
+#toast {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+  
+#toast.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+/* Media Query for Responsive */
+@media only screen and (max-width: 600px) {
+    body {
+        background-color: #FFDEAD;
+    }
+
+    .container {
+        display: block;
+        margin: 20px auto 0;
+        width: 300px;
+        border: 1px solid black;
+        background-color: #FFFAFA;
+        padding: 10px;
+    }
+
+    /* Add Task and Filter Task Dropdown Menu */
+    #new-title, #filter-task {
+        width: 65%;
+        padding: 2px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 1.1em;
+        margin-top: 3px;  
+    }
+
+    /* Filter Task Dropdown Menu */
+    #filter-task{
+        margin-top: 5px;
+        width: 80%;
+        outline: 0;
+        border: 0;
+    }
+
+    /* For Filter Dropdown Menu */
+    .select, .select1 {
+        width: 13em;
+    }
+
+    /* Input Tag for Add New Task */
+    #new_task {
+        width: 65%;
+        padding: 2px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 1.1em;
+        margin-bottom: 3px;
+        outline: 0;
+        border-width: 0 0 2px;
+        border-color: #497BE8;
+    }
+
+    /* Task for Edit Task Modal */
+    #edit-task {
+        width: 80%;
+    }
+
+    /* Add New Task Submit Button */
+    #btnSubmit{
+        margin: auto;
+        display: block;
+        padding: 2px;
+        text-align: center;
+        font-size: 1.1em;
+        width: 60%;
+        cursor: pointer;
+        border: none;
+        border-radius: 10px;
+    }
+
+    /* Add Task From Modal Submit Button */
+    #btnSubmit1 {
+        margin: auto;
+        display: block;
+        padding: 2px;
+        text-align: center;
+        font-size: 1.1em;
+        width: 40%;
+        height: 50px;
+        cursor: pointer;
+        border: none;
+        border-radius: 10px;
+    }
+
+    /* Submit Edit Task From Modal Submit Button */
+    #editModalTask {
+        padding: 2px;
+        text-align: center;
+        font-size: 1.1em;
+        width: 25%;
+        cursor: pointer;
+        border: none;
+        border-radius: 10px;
+    }
+
+    /* div tag for Search and Filter */
+    .search-and-filter{
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+
+    /* For Searchbar */
+    .icon-search {
+        position: relative;
+        align-content: center;
+    }
+    
+    /* For Search Icon */
+    .icon-srch { 
+        position: absolute; 
+        left: 10px;
+        top: 8px; 
+        font-size: 1.3em;
+    }
+
+    /* Add Task Dropdown Menu */
+    #new_title {
+        border: 0;
+    }
+
+    /* Searchbar Text */
+    #myInput1{
+        width: 65%;
+        height: 30px;
+        padding: 2px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        font-size: 1.1em;
+        padding-left: 40px;
+        margin-bottom: 10px;
+    }
+
+    /* Edit Task Modal Content, Add New Task Content */
+    .modal-content, .modal-content1 {
+        width: 80%;
+    }
+
+    /* div tag for particular Todo Task, div tag for particular Completed Task */
+    .info-todo, .info-completed {
+        margin-bottom: 5px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    /* Delete, Completed, Incompleted and Edit Button */
+    .delete, .completed, .incompleted, .edit {
+        font-size: 2em;
+    }
+
+    /* Rating and Button */
+    .rating-and-button {
+        display: inline;
+    }
+
+    /* Submit and Cancel Button for Feedback */
+    #submit-feedback, #cancel-feedback {
+        margin-left: 40px;
+        width: 30%;
+    }
+}
