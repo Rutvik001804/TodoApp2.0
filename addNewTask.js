@@ -56,6 +56,13 @@ const addTask = () => {
         todo.push(myTask);
         console.log("Add New Task");
         
+        var a = document.getElementById('toast');
+        
+        a.className = 'show';
+        setTimeout(() => { 
+            a.className = a.className.replace('show','');
+        }, 3000);
+        a.innerHTML = "Task Added Successfully";
         display(this.todo, this.completedTodo);
 
         $("#new_title").val("");
