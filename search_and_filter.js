@@ -3,14 +3,12 @@ const searchFilter = () => {
     var list = document.getElementById('remaining-tasks');
     var divele_todo = list.getElementsByClassName("info-todo");
     var li_todo = list.getElementsByClassName("list-todo");
-    var emt_todo = document.getElementById("search-todo-msg");
 
     var filter = document.getElementById('filter-task').value;
 
     var listCompleted = document.getElementById('completed-tasks');
     var divele_completed = listCompleted.getElementsByClassName("info-completed");
     var li_completed = listCompleted.getElementsByClassName("list-completed");
-    var emt_completed = document.getElementById("search-completed-msg");
 
     var value = document.getElementById("myInput1").value.toLowerCase().trim();
 
@@ -18,8 +16,8 @@ const searchFilter = () => {
     let counter_completed  = li_completed.length;
 
     if(li_todo.length == 0) {
-        emt_todo.style.display = "block";
-        document.getElementById('no-todo-task').style.display = "none";
+        $("#search-todo-msg").show();
+        $("#no-todo-task").hide();
     }
     else {
         for(let i=0; i<li_todo.length; i++) {
@@ -34,8 +32,8 @@ const searchFilter = () => {
     }
 
     if(li_completed.length == 0) {
-        emt_completed.style.display = "block";
-        document.getElementById('no-completed-task').style.display = "none";
+        $("#search-completed-msg").show();
+        $("#no-completed-task").hide();
     }
     else {
         for(let i=0; i<li_completed.length; i++) {
@@ -50,12 +48,12 @@ const searchFilter = () => {
     }
    
     if(counter_todo == 0) 
-        emt_todo.style.display = "block";
+        $("#search-todo-msg").show();
     else 
-        emt_todo.style.display = "none";
+        $("#search-todo-msg").hide();
 
     if(counter_completed == 0) 
-        emt_completed.style.display = "block";
+        $("#search-completed-msg").show();
     else 
-        emt_completed.style.display = "none";
+        $("#search-completed-msg").hide();
 }
