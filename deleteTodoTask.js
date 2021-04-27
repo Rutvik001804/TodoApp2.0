@@ -4,7 +4,11 @@ const deleteTask = (dlt) => {
     index = index.id;
     var last = index.toString().split('btnDelete', 2);
     
-    todo.splice(last[1],1);
+    // todo.splice(last[1],1);
+
+    var todos = JSON.parse(localStorage.getItem("myTodo"));
+    todos.splice(last[1],1);
+    localStorage.setItem("myTodo", JSON.stringify(todos));
 
     var a = document.getElementById('toast');
     a.className = 'show';
@@ -13,7 +17,7 @@ const deleteTask = (dlt) => {
     }, 3000);
     a.innerHTML = "Task Deleted Successfully";
 
-    display(this.todo, this.completedTodo);
+    display();
     
     console.log("Task Permanently Deleted From Todo");
     console.log(todo);
