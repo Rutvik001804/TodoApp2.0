@@ -4,8 +4,17 @@ const completedTask = (ele) => {
     index = index.id;
     var last = index.toString().split('btncompleted', 2);
     
-    completedTodo.push(todo[last[1]]);
-    todo.splice(last[1],1);
+    // completedTodo.push(todo[last[1]]);
+    // todo.splice(last[1],1);
+
+    var todos = JSON.parse(localStorage.getItem("myTodo"));
+    var completedTodos = JSON.parse(localStorage.getItem("myCompletedTodo"));
+
+    completedTodos.push(todos[last[1]]);
+    todos.splice(last[1],1);
+
+    localStorage.setItem("myTodo", JSON.stringify(todos));
+    localStorage.setItem("myCompletedTodo", JSON.stringify(completedTodos));
 
     var a = document.getElementById('toast');    
     a.className = 'show';
@@ -14,7 +23,7 @@ const completedTask = (ele) => {
     }, 3000);
     a.innerHTML = "Task Completed Successfully";
 
-    display(this.todo, this.completedTodo);
+    display();
     
     console.log("Task Go To Completed");
     console.log(completedTodo);
