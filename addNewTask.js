@@ -52,8 +52,12 @@ const addTask = () => {
             "task": $("#new_task").val().trim()
         }
 
-        todo.push(myTask);
-        console.log("Add New Task");
+        // todo.push(myTask);
+        // console.log("Add New Task");
+
+        var todos = JSON.parse(localStorage.getItem("myTodo"));
+        todos.push(myTask);
+        localStorage.setItem("myTodo", JSON.stringify(todos));
         
         var a = document.getElementById('toast');
         
@@ -62,7 +66,7 @@ const addTask = () => {
             a.className = a.className.replace('show','');
         }, 3000);
         a.innerHTML = "Task Added Successfully";
-        display(this.todo, this.completedTodo);
+        display();
 
         $("#new_title").val("");
         $("#new_task").val("");
