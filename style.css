@@ -498,7 +498,12 @@ option {
 
     /* Task for Edit Task Modal */
     #edit-task {
-        width: 80%;
+        width: 100%;
+    }
+
+    /* Edit Task From Modal */
+    #edit-newtask {
+        width: 65%;
     }
 
     /* Add New Task Submit Button */
