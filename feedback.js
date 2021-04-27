@@ -1,21 +1,19 @@
 // Show Submit and Cancel Button Feedback
 const showButton = () => {
-    var submit = document.getElementById('submit-feedback');
-    var cancel = document.getElementById('cancel-feedback');
 
-    submit.style.display = "block";
-    cancel.style.display = "block";
+    $("#submit-feedback").show();
+    $("#cancel-feedback").show();
     
     setTimeout(() => {
-        submit.style.display = "none";
-        cancel.style.display = "none";
+        $("#submit-feedback").hide();
+        $("#cancel-feedback").hide();
     }, 5000);
 }
 
 // Submit Feedback and Show Toast Message
 const submitFeedback = () => {
-    var feedback = document.getElementById('feedback');
-    feedback.style.display = "none";
+    
+    $("#feedback").hide();
 
     var a = document.getElementById('toast');
     a.className = 'show';
@@ -34,9 +32,6 @@ const cancelFeedback = () => {
     }, 3000);
     a.innerHTML = "Feedback Cancel";
 
-    var submit = document.getElementById('submit-feedback');
-    var cancel = document.getElementById('cancel-feedback');
-
-    submit.style.display = "none";
-    cancel.style.display = "none";
+    $("#submit-feedback").hide();
+    $("#cancel-feedback").hide();
 }

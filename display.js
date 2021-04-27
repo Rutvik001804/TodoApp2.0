@@ -16,8 +16,8 @@ const display =  (todo,completedTodo) => {
     listCompleted.innerHTML = '';
 
     document.getElementById("filter-task").selectedIndex = 0;
-    document.getElementById("search-todo-msg").style.display = "none";
-    document.getElementById("search-completed-msg").style.display = "none";
+    $("#search-todo-msg").hide();
+    $("#search-completed-msg").hide();
 
     if(todo.length == 0) {
         $(list).append('<li class="no-todo-task" id="no-todo-task">No Tasks. Add Some Tasks</li>');
