@@ -229,7 +229,7 @@ hr {
 
 /* Task for Edit Task Modal */
 #edit-task {
-    width: 50%;
+    width: 100%;
     border-radius: 3px;
     font-size: 1em;
 }
@@ -316,7 +316,7 @@ option {
 
 /* Input Tag for Add New Task */
 #new_task {
-    width: 37%;
+    width: 47%;
     padding: 2px;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -330,7 +330,7 @@ option {
 
 /* Edit Task From Modal */
 #edit-newtask {
-    width: 71%;
+    width: 47%;
     padding: 2px;
     border: 1px solid #ccc;
     border-radius: 3px;
