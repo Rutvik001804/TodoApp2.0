@@ -15,8 +15,10 @@ const editTask = (ele) => {
 
     $("#myModal").show();
 
-    $("#edit-newtitle").val(todo[last[1]]['title']);
-    $("#edit-newtask").val(todo[last[1]]['task']);
+    var todos = JSON.parse(localStorage.getItem("myTodo"));
+
+    $("#edit-newtitle").val(todos[last[1]]['title']);
+    $("#edit-newtask").val(todos[last[1]]['task']);
     $("#edit-task").append('<input type="hidden" id="editValue" value="'+last[1]+'" />');
 
     span.onclick = () => {
@@ -40,7 +42,8 @@ const editTask = (ele) => {
 
 // For Edit Task
 const editmyTask = () => {
-    var modal = document.getElementById("myModal");
+    var todos = JSON.parse(localStorage.getItem("myTodo"));
+
     $("#myModal").show();
 
     $("#validation_error_title").html("");
@@ -56,8 +59,11 @@ const editmyTask = () => {
     }
     if(document.getElementById("edit-newtitle").value != '' && document.getElementById("edit-newtask").value.trim().length != 0) {
         var arrId = document.getElementById("editValue").value;
-        todo[arrId]['title'] = document.getElementById("edit-newtitle").value;
-        todo[arrId]['task'] = document.getElementById("edit-newtask").value.trim();
+        
+        todos[arrId]['title'] = document.getElementById("edit-newtitle").value;
+        todos[arrId]['task'] = document.getElementById("edit-newtask").value.trim();
+
+        localStorage.setItem("myTodo", JSON.stringify(todos));
 
         var a = document.getElementById('toast');
         a.className = 'show';
