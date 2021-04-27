@@ -12,28 +12,27 @@ const addNewTask = () => {
     $("#new_title").val("");
     $("#new_task").val("");
     
-    modal.style.display = "block";
+    $("#myModal1").show();
 
     span.onclick = () => {
-        modal.style.display = "none";
+        $("#myModal1").hide();
     }
 
     window.onclick = (event) => {
         if (event.target == modal) {
-            modal.style.display = "none";
+            $("#myModal1").hide();
         }
     }
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
-            modal.style.display = "none";
+            $("#myModal1").hide();
         }
     });
 }
 
 // For Add New Task in Todo
 const addTask = () => {
-    var modal = document.getElementById("myModal1");
-    modal.style.display = "block";
+    $("#myModal1").show();
 
     $("#validation_error_title1").html("");
     $("#validation_error_task1").html("");
@@ -68,7 +67,7 @@ const addTask = () => {
         $("#new_title").val("");
         $("#new_task").val("");
 
-        modal.style.display = "none";
+        $("#myModal1").hide();
 
     }
     $("#new_task").focus();
