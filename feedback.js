@@ -1,6 +1,8 @@
 // Show Submit and Cancel Button Feedback
+var r = '0'; //For Rating
+const showButton = (ele) => {
 
-const showButton = () => {
+    r = ele.value;
 
     $("#submit-feedback").show();
     $("#cancel-feedback").show();
@@ -14,6 +16,11 @@ const showButton = () => {
 // Submit Feedback and Show Toast Message
 const submitFeedback = () => {
     
+    const user = firebase.auth().currentUser;
+    fireDB.database().ref('myList/'+user.uid).update({
+        Feedback: (r+'/5-Star')
+    });
+
     $("#feedback").hide();
 
     var a = document.getElementById('toast');
