@@ -50,7 +50,7 @@ body {
     grid-template-columns: 1fr 3fr;
 }
 
-#validation_error_login_email, #validation_error_login_password, #validation_error_signup {
+#validation_error_login_email, #validation_error_login_password, #validation_error_auth {
     color: red;
 }
 
