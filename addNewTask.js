@@ -52,7 +52,7 @@ const addTask = () => {
         }
         else {
             var sessionID = sessionStorage.getItem("loginUser");
-            console.log("SessionID : " + sessionID);
+            // console.log("SessionID : " + sessionID);
 
             var ttl = $("#new_title").val();
             var tsk = $("#new_task").val().trim();

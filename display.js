@@ -87,6 +87,4 @@ const myDisplay = () => {
         });
         display(this.todo, this.completedTodo);
     });
-    console.log(todo);
-    console.log(completedTodo);
 }

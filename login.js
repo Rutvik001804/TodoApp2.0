@@ -26,13 +26,13 @@ const signup = () => {
                 fireDB.database().ref('users/'+uid).set({
                     email: email
                 });
-                console.log("Sign Up Done : " + email);
+                // console.log("Sign Up Done : " + email);
                 $("#btnLogout").show();
                 $("#myLogin").hide();
                 $("#container").show();
 
                 const user = firebase.auth().currentUser;
-                console.log("Sign up User UID : "+user.uid);
+                // console.log("Sign up User UID : "+user.uid);
                 sessionStorage.setItem("loginUser", user.uid);
 
                 fireDB.database().ref('myList/'+user.uid).set({
@@ -75,9 +75,9 @@ const signin = () => {
         promise
             .then( () => {
                 const user = firebase.auth().currentUser;
-                console.log("Sign In Done : " + email);
+                // console.log("Sign In Done : " + email);
                 sessionStorage.setItem("loginUser", user.uid);
-                console.log("Sign in User UID : "+user.uid);
+                // console.log("Sign in User UID : "+user.uid);
 
                 $("#btnLogout").show();
                 $("#myLogin").hide();
